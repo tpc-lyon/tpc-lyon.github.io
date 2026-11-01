@@ -23,6 +23,32 @@
     }).join('');
   }
 
+  // Carte des deux sites (page La vie en TPC) : Leaflet, chargé depuis lib/
+  var carte = document.getElementById('carte');
+  if (carte && window.SITES) {
+    if (!window.L) {
+      carte.classList.add('sans-carte');
+      carte.textContent = 'La carte n’a pas pu se charger. Les adresses des deux sites sont indiquées ci-contre.';
+    } else {
+      var css = getComputedStyle(document.body);
+      var teinte = { cours: css.getPropertyValue('--nuit').trim() || '#14213D', tp: css.getPropertyValue('--accent').trim() || '#3A3AD0' };
+      var mobile = window.matchMedia('(pointer: coarse)').matches;
+      var map = L.map(carte, { scrollWheelZoom: false, dragging: !mobile, tap: false, zoomControl: true });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19, subdomains: 'abcd',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+      }).addTo(map);
+      var pts = window.SITES.map(function (s) {
+        var c = teinte[s.type] || teinte.cours;
+        L.circleMarker([s.lat, s.lon], { radius: 10, color: '#fff', weight: 3, fillColor: c, fillOpacity: 1 })
+          .addTo(map)
+          .bindTooltip('<b>' + esc(s.nom) + '</b><br>' + esc(s.role), { permanent: true, direction: s.type === 'tp' ? 'bottom' : 'top', offset: [0, s.type === 'tp' ? 12 : -12], className: 'etiquette-site' });
+        return [s.lat, s.lon];
+      });
+      map.fitBounds(pts, { padding: [85, 80], maxZoom: 16 });
+    }
+  }
+
   // Photos : on charge img/xxx.jpg ; si le fichier n'existe pas encore, un emplacement indique quoi fournir.
   document.querySelectorAll('figure.photo[data-src]').forEach(function (fig) {
     var img = new Image();

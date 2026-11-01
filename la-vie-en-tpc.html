@@ -15,7 +15,7 @@
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="marque" href="index.html"><img class="logo" src="img/logo-martiniere.png" alt="La Martinière Diderot" width="86" height="50"><span class="marque-texte"><b>Prépa TPC</b><span>Lyon, site des Augustins</span></span></a>
+    <a class="marque" href="index.html"><img class="logo" src="img/logo-martiniere.png" alt="La Martinière Diderot" width="86" height="50"><span class="marque-texte"><b>Prépa TPC</b><span>Lycée La Martinière Diderot, Lyon 1<sup>er</sup></span></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Pages du site">
     <a href="index.html">Accueil</a>
@@ -56,15 +56,67 @@
   </div>
 </section>
 
+<section class="section" id="sites">
+  <div class="wrap">
+    <h2>Deux sites, à dix minutes à pied</h2>
+    <p class="intro">Le cloître des Augustins est en cours de rénovation. En attendant, la prépa vit sur deux sites du lycée, tous deux dans le 1<sup>er</sup> arrondissement.</p>
+    <div class="sites">
+      <div class="carte" id="carte" role="region" aria-label="Carte des deux sites du lycée"></div>
+      <div class="sites-liste">
+        <div class="site-fiche"><span class="pastille p-cours" aria-hidden="true"></span><div>
+          <h3>Site Diderot</h3>
+          <p class="adr">41 cours Général-Giraud, 69001 Lyon</p>
+          <p>Les cours, les colles et les devoirs. C’est aussi là que se trouvent l’internat et le gymnase.</p>
+        </div></div>
+        <div class="site-fiche"><span class="pastille p-tp" aria-hidden="true"></span><div>
+          <h3>Site des Augustins</h3>
+          <p class="adr">18 place Gabriel-Rambaud, 69001 Lyon</p>
+          <p>Les laboratoires de physique et de chimie, pour les TP. Le cloître, lui, est en rénovation.</p>
+        </div></div>
+        <p><a href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&amp;route=45.76964%2C4.82309%3B45.76810%2C4.83012" target="_blank" rel="noopener">Itinéraire à pied entre les deux sites</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section teinte" id="internat">
+  <div class="wrap">
+    <h2>L’internat</h2>
+    <div class="duo">
+      <div class="mesure">
+        <p>L’internat se trouve sur le site Diderot, là où ont lieu les cours. Pas de trajet entre la chambre et la salle de classe : plus de temps pour travailler, et pour se reposer.</p>
+        <p>C’est aussi une vie collective : on travaille ensemble le soir, on s’entraide avant une colle, on partage les repas. Le gymnase est juste à côté.</p>
+      </div>
+      <div class="infos infos-internat">
+        <div><h3>Places et admission</h3><p><span class="a-completer">À compléter : nombre de places pour la prépa, comment en faire la demande.</span></p></div>
+        <div><h3>Tarif et repas</h3><p><span class="a-completer">À compléter : prix de la pension, repas compris, aides possibles.</span></p></div>
+        <div><h3>Week-ends et vacances</h3><p><span class="a-completer">À compléter : ouverture le week-end, horaires.</span></p></div>
+      </div>
+    </div>
+    <div class="photos-2">
+      <figure class="photo" data-src="img/internat-1.jpg" data-alt="L’internat du site Diderot"></figure>
+      <figure class="photo" data-src="img/internat-2.jpg" data-alt="L’internat du site Diderot"></figure>
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="lib/leaflet.css">
+<script src="lib/leaflet.js"></script>
 <script>
 /* ===== Les sorties =====
    Une ligne par sortie, la plus récente en premier. Ajouter ou supprimer des lignes librement.
    photo : déposer l'image dans le dossier img/ (format paysage de préférence).
    date : par exemple 'Octobre 2026'. legende : une ou deux phrases, facultative. */
 var SORTIES = [
-  { titre: 'Pique-nique au parc de la tête d or', date: 'juin 2026', photo: 'img/sortie-1.jpg', legende: '' },
+  { titre: 'Pique-nique au parc de la Tête d’Or', date: 'juin 2026', photo: 'img/sortie-1.jpg', legende: '' },
   { titre: 'Titre de la sortie', date: 'Mois année', photo: 'img/sortie-2.jpg', legende: '' },
   { titre: 'Titre de la sortie', date: 'Mois année', photo: 'img/sortie-3.jpg', legende: '' }
+];
+
+/* ===== Les deux sites sur la carte (coordonnées GPS : latitude, longitude) ===== */
+var SITES = [
+  { nom: 'Site Diderot', role: 'Cours, internat, gymnase', type: 'cours', lat: 45.76964, lon: 4.82309 },
+  { nom: 'Site des Augustins', role: 'Laboratoires de TP', type: 'tp', lat: 45.76810, lon: 4.83012 }
 ];
 </script>
 </main>
@@ -75,8 +127,8 @@ var SORTIES = [
       <div>
         <img class="logo-pied" src="img/logo-martiniere-blanc.png" alt="La Martinière Diderot" width="120" height="70">
         <b>Prépa TPC — Lycée La Martinière Diderot</b>
-        Site des Augustins<br>
-        18 place Gabriel-Rambaud, 69001 Lyon<br>
+        Cours : 41 cours Général-Giraud, 69001 Lyon<br>
+        TP : 18 place Gabriel-Rambaud, 69001 Lyon<br>
         Standard du lycée : 04 37 40 87 37
       </div>
       <div>
