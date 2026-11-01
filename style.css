@@ -424,3 +424,5 @@ body.p-contact .page-tete::after { display: none; }
 .infos-internat { grid-template-columns: 1fr; }
 .infos-internat div { padding: 12px 0 14px; }
 #internat .duo { align-items: start; }
+/* Fond de carte OpenStreetMap adouci en gris : seuls les deux points restent en couleur */
+.carte .leaflet-tile-pane { filter: grayscale(1) brightness(1.04) contrast(0.92); }
