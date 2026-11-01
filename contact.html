@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nous contacter — Prépa TPC La Martinière Diderot</title>
+<meta name="description" content="Écrire à l’équipe de la prépa TPC de La Martinière Diderot : questions sur la prépa, journées d’immersion, portes ouvertes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314213D'/%3E%3Crect x='5' y='6' width='2.5' height='20' fill='%23A04DFF'/%3E%3Crect x='9' y='6' width='2.5' height='20' fill='%235B5BFF'/%3E%3Crect x='14' y='6' width='2.5' height='20' fill='%2322C6F0'/%3E%3Crect x='25' y='6' width='2.5' height='20' fill='%23FF3B30'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-contact">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="marque" href="index.html"><img class="logo" src="img/logo-martiniere.png" alt="La Martinière Diderot" width="86" height="50"><span class="marque-texte"><b>Prépa TPC</b><span>Lyon, site des Augustins</span></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Pages du site">
+    <a href="index.html">Accueil</a>
+    <a href="la-prepa.html">La prépa</a>
+    <a href="apres-la-prepa.html">Après la prépa</a>
+    <a href="la-vie-en-tpc.html">La vie en TPC</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="contact.html" class="cta" aria-current="page">Nous contacter</a>
+    </nav>
+  </div>
+  <div class="lisere" aria-hidden="true"><i class="r-delta"></i><i class="r-gamma"></i><i class="r-beta"></i><i class="r-alpha"></i></div>
+</header>
+<main id="contenu">
+
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Nous contacter</h1>
+    <p>Une question sur la prépa, une journée d’immersion, les portes ouvertes ? Écrivez-nous : un professeur vous répond.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grille">
+    <form id="contact-form" class="formulaire" novalidate>
+      <div class="champs-2">
+        <label class="champ"><span>Prénom et nom</span><input type="text" name="nom" autocomplete="name" required></label>
+        <label class="champ"><span>Adresse électronique</span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <label class="champ"><span>Votre lycée et votre classe <em>(facultatif)</em></span><input type="text" name="lycee" placeholder="Ex. : lycée Jean Moulin, terminale STL SPCL"></label>
+      <label class="champ"><span>Votre demande concerne</span>
+        <select name="objet" required>
+          <option value="" disabled selected>Choisir…</option>
+          <option>Une question sur la prépa</option>
+          <option>Une journée d’immersion</option>
+          <option>Les portes ouvertes</option>
+          <option>La candidature sur Parcoursup</option>
+          <option>Autre chose</option>
+        </select></label>
+      <label class="champ"><span>Votre message</span><textarea name="message" rows="7" required></textarea></label>
+      <!-- Champ piège contre les robots : invisible pour les visiteurs, laissé vide par un humain -->
+      <label class="piege" aria-hidden="true">Ne pas remplir<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+      <div class="envoi">
+        <button type="submit" class="btn btn-nuit">Envoyer le message</button>
+        <span id="contact-statut" class="statut" role="status"></span>
+      </div>
+      <p class="rgpd">Vos informations servent uniquement à vous répondre. Elles ne sont ni conservées au-delà, ni transmises.</p>
+    </form>
+
+    <aside class="contact-infos">
+      <h3>Nous trouver</h3>
+      <p>Lycée La Martinière Diderot<br>Site des Augustins<br>18 place Gabriel-Rambaud<br>69001 Lyon</p>
+      <p>Standard du lycée :<br>04 37 40 87 37</p>
+      <h3>Venir nous voir</h3>
+      <p>Portes ouvertes, journées d’immersion : toutes les dates sont sur la page <a href="candidater.html#venir">Candidater</a>.</p>
+    </aside>
+  </div>
+</section>
+
+<script>
+/* Formulaire de contact → formulaire Google « Contact prépa TPC » (comme sur le site becler-physique). */
+var GOOGLE_FORM = {
+  action: 'https://docs.google.com/forms/d/e/1FAIpQLSdgCE5CYsnfdNtKyjkc5t6JMLUveKvqJSDGVMZYKaB5Yjq7Tw/formResponse',
+  nom: 'entry.231613045',
+  email: 'entry.2059031284',
+  lycee: 'entry.144871021',
+  objet: 'entry.1472850570',
+  message: 'entry.1358427468'
+};
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img class="logo-pied" src="img/logo-martiniere-blanc.png" alt="La Martinière Diderot" width="120" height="70">
+        <b>Prépa TPC — Lycée La Martinière Diderot</b>
+        Site des Augustins<br>
+        18 place Gabriel-Rambaud, 69001 Lyon<br>
+        Standard du lycée : 04 37 40 87 37
+      </div>
+      <div>
+        <b>Le site</b>
+        <ul>
+          <li><a href="la-prepa.html">La prépa</a></li>
+          <li><a href="apres-la-prepa.html">Après la prépa</a></li>
+          <li><a href="la-vie-en-tpc.html">La vie en TPC</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="candidater.html">Candidater</a></li>
+          <li><a href="contact.html">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Liens utiles</b>
+        <ul>
+          <li><a href="https://www.lamartinierediderot.fr" target="_blank" rel="noopener">Site du lycée</a></li>
+          <li><a href="https://www.parcoursup.gouv.fr" target="_blank" rel="noopener">Parcoursup</a></li>
+          <li><a href="https://www.concours-commun-inp.fr" target="_blank" rel="noopener">Concours Commun INP</a></li>
+          <li><a href="https://www.onisep.fr/formation/apres-le-bac-les-etudes-superieures/les-principales-filieres-d-etudes-superieures/les-classes-preparatoires-aux-grandes-ecoles-cpge/les-prepas-scientifiques/la-prepa-tpc-technologie-physique-et-chimie" target="_blank" rel="noopener">La prépa TPC sur l’Onisep</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="bas">Site réalisé par l’équipe pédagogique de la classe préparatoire TPC. Photos et vidéos publiées avec l’accord des personnes filmées.</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

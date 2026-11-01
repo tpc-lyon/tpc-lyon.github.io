@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Après la prépa TPC — écoles et métiers</title>
+<meta name="description" content="Le métier d’ingénieur, les écoles accessibles après la prépa TPC (Concours Commun INP, admissions sur dossier) et la poursuite d’études à l’université vers la recherche.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314213D'/%3E%3Crect x='5' y='6' width='2.5' height='20' fill='%23A04DFF'/%3E%3Crect x='9' y='6' width='2.5' height='20' fill='%235B5BFF'/%3E%3Crect x='14' y='6' width='2.5' height='20' fill='%2322C6F0'/%3E%3Crect x='25' y='6' width='2.5' height='20' fill='%23FF3B30'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-apres">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="marque" href="index.html"><img class="logo" src="img/logo-martiniere.png" alt="La Martinière Diderot" width="86" height="50"><span class="marque-texte"><b>Prépa TPC</b><span>Lyon, site des Augustins</span></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Pages du site">
+    <a href="index.html">Accueil</a>
+    <a href="la-prepa.html">La prépa</a>
+    <a href="apres-la-prepa.html" aria-current="page">Après la prépa</a>
+    <a href="la-vie-en-tpc.html">La vie en TPC</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="contact.html" class="cta">Nous contacter</a>
+    </nav>
+  </div>
+  <div class="lisere" aria-hidden="true"><i class="r-delta"></i><i class="r-gamma"></i><i class="r-beta"></i><i class="r-alpha on"></i></div>
+</header>
+<main id="contenu">
+
+<section class="page-tete">
+  <div class="wrap">
+    <h1>Des écoles d’ingénieurs qui vous attendent</h1>
+    <p>Après deux ans de TPC, vous passez le Concours Commun INP dans votre propre filière et vous pouvez candidater à d’autres écoles sur dossier. L’université vous est aussi ouverte, si vous voulez faire de la recherche.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap duo">
+    <div>
+      <h2>Ingénieur, c’est quoi ?</h2>
+      <p>Un ingénieur part d’un problème concret et mobilise les sciences pour le résoudre : produire un médicament à grande échelle, recycler un plastique, concevoir une batterie plus sûre, rendre l’eau d’une ville potable. Il conçoit, fabrique, améliore et fait fonctionner des produits, des procédés ou des installations, en tenant compte des coûts, de la sécurité et de l’environnement.</p>
+      <p>C’est un métier d’équipe : l’ingénieur travaille avec des techniciens, des chercheurs et des clients, et prend vite la responsabilité de projets. Selon le poste, il est au laboratoire, en usine, dans un bureau d’études ou sur le terrain. Le diplôme se prépare en trois ans dans une école, après la prépa, et confère le grade de master.</p>
+      <p>Les écoles accessibles après la TPC forment des ingénieurs dans des secteurs qui recrutent :</p>
+      <ul class="metiers">
+        <li>chimie fine, pharmacie, cosmétique</li>
+        <li>génie des procédés et industrie chimique</li>
+        <li>matériaux, polymères, céramiques</li>
+        <li>énergie et transition énergétique</li>
+        <li>eau, environnement, traitement des déchets</li>
+        <li>papier, emballages, impression</li>
+        <li>agroalimentaire et biotechnologies</li>
+        <li>recherche et développement</li>
+      </ul>
+    </div>
+    <figure class="photo" data-src="img/chimie.jpg" data-alt="Une manipulation en chimie"></figure>
+  </div>
+</section>
+
+<section class="section teinte">
+  <div class="wrap">
+    <h2>Le Concours Commun INP, filière TPC</h2>
+    <p class="intro">Écrits fin avril, oraux et TIPE fin juin. Les places sont réservées aux élèves de TPC : vous n’êtes classés qu’entre vous. Les meilleurs à l’écrit sont dispensés d’oral pour les écoles du concours.</p>
+    <div class="filtres" id="filtres" aria-label="Filtrer par domaine"></div>
+    <div class="table-scroll">
+      <table class="ecoles">
+        <thead><tr><th>École</th><th class="col-ville">Ville</th><th>Domaines</th><th class="num">Places TPC</th></tr></thead>
+        <tbody id="ecoles-corps"></tbody>
+      </table>
+    </div>
+    <p class="note-source">Places offertes en filière TPC selon le règlement 2026 du Concours Commun INP, à confirmer chaque année. * Places partagées avec d’autres filières.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>D’autres écoles, sur dossier</h2>
+    <p class="intro">Ces écoles recrutent les élèves de TPC sur dossier, souvent avec un entretien, en dehors du concours.</p>
+    <div class="table-scroll">
+      <table class="ecoles">
+        <thead><tr><th>École</th><th class="col-ville">Ville</th><th>Spécialités</th></tr></thead>
+        <tbody id="dossier-corps"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section teinte">
+  <div class="wrap">
+    <h2>L’université et la recherche</h2>
+    <div class="mesure">
+      <p>La prépa donne des bases solides pour poursuivre à l’université. Avec deux années validées, soit 120 crédits ECTS, vous pouvez candidater en troisième année de licence de physique, de chimie ou de physique-chimie, puis continuer en master.</p>
+      <p>C’est la voie de la recherche : après le master, le doctorat (trois ans) mène aux métiers de chercheur, dans un laboratoire public ou dans le service de recherche et développement d’une entreprise. Le doctorat est aussi accessible après une école d’ingénieurs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Où sont allés nos anciens</h2>
+    <div class="table-scroll" style="max-width:720px">
+      <table class="ecoles">
+        <thead><tr><th>Année</th><th>École</th><th class="num">Élèves</th></tr></thead>
+        <tbody id="anciens-corps"></tbody>
+      </table>
+    </div>
+    <p style="margin-top:24px"><a href="temoignages.html">Ils racontent leur parcours</a></p>
+  </div>
+</section>
+
+<script>
+/* ===== Écoles du Concours Commun INP, filière TPC (règlement 2026) =====
+   domaines possibles : chimie, procedes, materiaux, energie, numerique, bio */
+var DOMAINES = { chimie: 'Chimie', procedes: 'Procédés', materiaux: 'Matériaux', energie: 'Énergie', numerique: 'Numérique', bio: 'Biotech-santé' };
+var ECOLES = [
+  { nom: 'Chimie ParisTech – PSL', ville: 'Paris', domaines: ['chimie'], places: 2, url: 'https://www.chimieparistech.psl.eu' },
+  { nom: 'Clermont Auvergne INP – Sigma', ville: 'Clermont-Ferrand', domaines: ['chimie', 'materiaux'], places: 2, url: 'https://www.clermont-auvergne-inp.fr' },
+  { nom: 'CPE Lyon', ville: 'Villeurbanne', domaines: ['chimie', 'procedes'], places: 2, url: 'https://www.cpe.fr' },
+  { nom: 'ECPM Strasbourg', ville: 'Strasbourg', domaines: ['chimie', 'materiaux'], places: 3, url: 'https://ecpm.unistra.fr' },
+  { nom: 'ENSCL Lille', ville: 'Lille', domaines: ['chimie'], places: 1, url: 'https://www.ensc-lille.fr' },
+  { nom: 'ENSCM Montpellier', ville: 'Montpellier', domaines: ['chimie'], places: 2, url: 'https://www.enscm.fr' },
+  { nom: 'ENSCMu Mulhouse', ville: 'Mulhouse', domaines: ['chimie'], places: 2, url: 'https://www.enscmu.uha.fr' },
+  { nom: 'ENSGTI Pau', ville: 'Pau', domaines: ['procedes', 'energie'], places: 3, url: 'https://ensgti.univ-pau.fr' },
+  { nom: 'ENSICAEN', ville: 'Caen', domaines: ['chimie', 'materiaux', 'numerique'], places: 2, url: 'https://www.ensicaen.fr' },
+  { nom: 'Grenoble INP – Pagora', ville: 'Grenoble', domaines: ['materiaux', 'procedes'], places: 2, url: 'https://pagora.grenoble-inp.fr' },
+  { nom: 'Lorraine INP – ENSEM', ville: 'Nancy', domaines: ['energie'], places: 2, url: 'https://ensem.univ-lorraine.fr' },
+  { nom: 'Lorraine INP – ENSIC', ville: 'Nancy', domaines: ['procedes', 'chimie'], places: 2, url: 'https://ensic.univ-lorraine.fr' },
+  { nom: 'SeaTech Toulon', ville: 'Toulon', domaines: ['materiaux', 'numerique'], places: 2, url: 'https://seatech.univ-tln.fr' },
+  { nom: 'Toulouse INP – ENSIACET', ville: 'Toulouse', domaines: ['chimie', 'procedes', 'materiaux'], places: 1, url: 'https://www.ensiacet.fr' },
+  { nom: "EIL Côte d'Opale", ville: 'Calais', domaines: ['numerique', 'energie'], places: 10, url: 'https://eilco.univ-littoral.fr', remarque: 'école en banque d’épreuves : écrits du concours + entretien propre' },
+  { nom: 'ESCOM Chimie', ville: 'Compiègne', domaines: ['chimie'], places: 3, url: 'https://www.escom.fr', remarque: 'école en banque d’épreuves : écrits du concours + entretien propre' },
+  { nom: 'ITECH Lyon', ville: 'Écully', domaines: ['chimie', 'materiaux'], places: 3, url: 'https://www.itech.fr', remarque: 'école en banque d’épreuves : écrits du concours + entretien propre' },
+  { nom: 'Groupe INSA – Biotechnologies-santé', ville: 'Réseau INSA', domaines: ['bio'], places: 20, partage: true, url: 'https://www.groupe-insa.fr', remarque: 'écrits du concours + dossier + entretien' }
+];
+
+/* ===== Écoles sur dossier ===== */
+var ECOLES_DOSSIER = [
+  { nom: 'ESPCI Paris – PSL', ville: 'Paris', specialites: 'Physique, chimie, biologie', url: 'https://www.espci.psl.eu', remarque: 'admission sur titre : dossier puis épreuves' },
+  { nom: 'Réseau Polytech', ville: 'Plusieurs villes', specialites: 'Matériaux, génie biologique, environnement', url: 'https://www.polytech-reseau.org', remarque: 'concours sur titres : dossier + entretien de motivation' },
+  { nom: 'Grenoble INP – Ense3', ville: 'Grenoble', specialites: 'Énergie, eau, environnement', url: 'https://ense3.grenoble-inp.fr', remarque: 'admission sur dossier' },
+  { nom: 'Lorraine INP – ENSTIB', ville: 'Épinal', specialites: 'Bois, construction, matériaux', url: 'https://enstib.univ-lorraine.fr', remarque: 'admission sur dossier' },
+  { nom: 'ENSIL-ENSCI', ville: 'Limoges', specialites: 'Céramiques, matériaux, eau-environnement', url: 'https://www.ensil-ensci.unilim.fr', remarque: 'admission sur dossier' },
+  { nom: 'UTC, UTT, UTBM', ville: 'Compiègne, Troyes, Belfort', specialites: 'Procédés, matériaux, mécanique, énergie, numérique', url: 'https://www.utc.fr', remarque: 'recrutement commun aux trois universités de technologie : dossier + entretien' },
+  { nom: 'ISTP', ville: 'Saint-Étienne', specialites: 'Énergie, mécanique, numérique', url: 'https://www.istp-france.com', remarque: 'en apprentissage ; diplômes Mines Saint-Étienne ou Arts et Métiers' }
+];
+
+/* ===== Où sont allés nos anciens : une ligne par école et par année =====
+   Exemple : { annee: 2025, ecole: 'CPE Lyon', nombre: 2 }, */
+var ANCIENS = [
+];
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img class="logo-pied" src="img/logo-martiniere-blanc.png" alt="La Martinière Diderot" width="120" height="70">
+        <b>Prépa TPC — Lycée La Martinière Diderot</b>
+        Site des Augustins<br>
+        18 place Gabriel-Rambaud, 69001 Lyon<br>
+        Standard du lycée : 04 37 40 87 37
+      </div>
+      <div>
+        <b>Le site</b>
+        <ul>
+          <li><a href="la-prepa.html">La prépa</a></li>
+          <li><a href="apres-la-prepa.html">Après la prépa</a></li>
+          <li><a href="la-vie-en-tpc.html">La vie en TPC</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="candidater.html">Candidater</a></li>
+          <li><a href="contact.html">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Liens utiles</b>
+        <ul>
+          <li><a href="https://www.lamartinierediderot.fr" target="_blank" rel="noopener">Site du lycée</a></li>
+          <li><a href="https://www.parcoursup.gouv.fr" target="_blank" rel="noopener">Parcoursup</a></li>
+          <li><a href="https://www.concours-commun-inp.fr" target="_blank" rel="noopener">Concours Commun INP</a></li>
+          <li><a href="https://www.onisep.fr/formation/apres-le-bac-les-etudes-superieures/les-principales-filieres-d-etudes-superieures/les-classes-preparatoires-aux-grandes-ecoles-cpge/les-prepas-scientifiques/la-prepa-tpc-technologie-physique-et-chimie" target="_blank" rel="noopener">La prépa TPC sur l’Onisep</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="bas">Site réalisé par l’équipe pédagogique de la classe préparatoire TPC. Photos et vidéos publiées avec l’accord des personnes filmées.</p>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
