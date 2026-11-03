@@ -128,11 +128,11 @@ p { margin: 0 0 1em; }
 .spectre .axe span::before { content: ''; position: absolute; left: 50%; top: -6px; height: 5px; border-left: 1px solid #5B6B8A; }
 .spectre figcaption { font-size: 0.88rem; color: #A9B6CC; padding: 4px 0 28px; }
 @media (prefers-reduced-motion: no-preference) {
-  .spectre .bande i { opacity: 0; animation: allume 0.9s ease-out forwards; }
-  .spectre .bande .r-alpha { animation-delay: 0.3s; }
-  .spectre .bande .r-beta { animation-delay: 0.75s; }
-  .spectre .bande .r-gamma { animation-delay: 1.2s; }
-  .spectre .bande .r-delta { animation-delay: 1.65s; }
+  .spectre .bande i { opacity: 0; animation: allume 1.1s ease-out forwards; }
+  .spectre .bande .r-alpha { animation-delay: 0.4s; }
+  .spectre .bande .r-beta { animation-delay: 1.2s; }
+  .spectre .bande .r-gamma { animation-delay: 2s; }
+  .spectre .bande .r-delta { animation-delay: 2.8s; }
   @keyframes allume { 0% { opacity: 0; } 35% { opacity: 1; filter: brightness(1.6); } 100% { opacity: 1; filter: none; } }
 }
 
