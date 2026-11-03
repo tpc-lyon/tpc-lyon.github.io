@@ -477,3 +477,43 @@ body.p-contact .page-tete::after { display: none; }
   .pc-concours::before { content: '↓'; display: block; color: var(--nuit); font-weight: 700; margin-bottom: 2px; }
 }
 
+
+/* =========================================================
+   Version « chaleureuse » (novembre 2026)
+   Pour revenir à l'ancienne apparence : supprimer tout ce bloc.
+   ========================================================= */
+:root {
+  --fond-2: #F6F1E8;       /* bandeaux clairs : papier chaud au lieu du gris bleuté */
+  --trait: #E4DCCD;
+  --gris: #5D5850;         /* texte secondaire, gris chaud */
+  --titre: 'Fraunces', Georgia, 'Times New Roman', serif;
+}
+h1, h2, h3, .marque b, .reperes b, .lexique dt, .membre .visage, .pc-an b {
+  font-family: var(--titre); font-stretch: 100%; font-variation-settings: 'SOFT' 60, 'WONK' 0; letter-spacing: -0.005em;
+}
+h1 { font-weight: 640; line-height: 1.08; }
+h2 { font-weight: 600; }
+h3 { font-weight: 600; font-size: 1.22rem; }
+.marque b { font-weight: 650; }
+.reperes b { font-weight: 650; }
+.btn-plein:hover { background: #F3EDE2; }
+.photo.manque { border-color: #CDBFA9; background: repeating-linear-gradient(135deg, #F9F5EE 0 14px, #F2ECE1 14px 28px); }
+.photo.manque .etiquette { color: #5D5850; }
+.video .ecran.manque { border-color: #CDBFA9; background: repeating-linear-gradient(135deg, #F9F5EE 0 14px, #F2ECE1 14px 28px); color: #5D5850; }
+.photo figcaption { font-style: italic; }
+
+/* Accueil : la photo de groupe dans l'écran d'accueil (format paysage) */
+.p-accueil .hero-grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); }
+.p-accueil .photo.groupe { aspect-ratio: 3 / 2; max-width: none; justify-self: stretch; }
+@media (max-width: 860px) { .p-accueil .hero-grille { grid-template-columns: 1fr; } }
+
+/* Accueil : le mot de l'équipe */
+.section.mot { padding-bottom: clamp(40px, 6vw, 72px); }
+.mot-equipe { margin: 0 auto; max-width: 760px; text-align: center; }
+.mot-equipe h2 { font-size: clamp(1.3rem, 2.2vw, 1.6rem); color: var(--accent); margin-bottom: 0.8em; }
+.mot-equipe blockquote { margin: 0; font-family: var(--titre); font-variation-settings: 'SOFT' 100, 'WONK' 0; font-style: italic; font-weight: 400;
+  font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.55; color: var(--encre); }
+.mot-equipe blockquote p { margin: 0 0 0.8em; }
+.mot-equipe figcaption { margin-top: 0.4em; color: var(--gris); font-size: 0.98rem; }
+.mot-equipe figcaption::before { content: ''; display: block; width: 48px; height: 3px; margin: 0 auto 14px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--h-delta), var(--h-gamma), var(--h-beta), var(--h-alpha)); }
