@@ -383,13 +383,13 @@ body.p-contact .page-tete::after { display: none; }
 @media (max-width: 720px) { .horaires { grid-template-columns: 1fr; justify-items: center; } }
 .camembert { width: 100%; max-width: 320px; }
 .camembert svg { display: block; width: 100%; height: auto; overflow: visible; }
-.camembert .part { stroke: var(--fond-2); stroke-width: 2; stroke-linejoin: round; transition: opacity .15s, transform .15s; cursor: default; }
+.camembert .part { stroke: var(--fond-2); stroke-width: 2; stroke-linejoin: round; transition: opacity .15s, transform .15s; cursor: pointer; }
 .camembert.survol .part { opacity: .35; }
 .camembert.survol .part.on { opacity: 1; transform: scale(1.03); }
 .camembert .centre-val { font-size: 26px; font-weight: 700; fill: var(--encre); }
 .camembert .centre-lib { font-size: 9.5px; fill: var(--gris); }
 .horaires-legende { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; width: 100%; max-width: 440px; }
-.horaires-legende li { display: grid; grid-template-columns: 14px 1fr auto 3.2em; gap: 12px; align-items: center; padding: 7px 10px; border-radius: var(--r); font-size: 0.98rem; outline: none; }
+.horaires-legende li { cursor: pointer; display: grid; grid-template-columns: 14px 1fr auto; gap: 12px; align-items: center; padding: 7px 10px; border-radius: var(--r); font-size: 0.98rem; outline: none; }
 .horaires-legende li.on, .horaires-legende li:focus-visible { background: #fff; box-shadow: 0 0 0 1px #D3DBE4; }
 .horaires-legende i { width: 14px; height: 14px; border-radius: 4px; }
 .horaires-legende b { font-weight: 650; font-variant-numeric: tabular-nums; }
@@ -475,3 +475,9 @@ body.p-contact .page-tete::after { display: none; }
   .pc-concours::after { display: none; }
   .pc-concours::before { content: '↓'; display: block; color: var(--nuit); font-weight: 700; margin-bottom: 2px; }
 }
+
+/* ---------------- Accueil : encadré « J'hésite avec une prépa intégrée » ---------------- */
+.hesite { margin-top: 48px; background: #fff; border-left: 4px solid var(--nuit); border-radius: 0 var(--r) var(--r) 0; padding: clamp(20px, 3vw, 32px) clamp(20px, 3.5vw, 40px); max-width: 880px; }
+.hesite h3 { margin: 0 0 12px; font-size: 1.25rem; }
+.hesite p { margin: 0 0 12px; }
+.hesite p:last-child { margin-bottom: 0; }

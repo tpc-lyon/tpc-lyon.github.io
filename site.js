@@ -158,7 +158,7 @@
     svg += '<text class="centre-val" y="2" text-anchor="middle">' + fmt(tot) + '</text><text class="centre-lib" y="22" text-anchor="middle">par semaine</text></svg>';
     cam.innerHTML = svg;
     leg.innerHTML = H.map(function (m, i) {
-      return '<li tabindex="0" data-i="' + i + '"><i class="c' + (i % 8) + '"></i><span>' + esc(m.matiere) + '</span><b>' + fmt(m.heures) + '</b><em>' + pct(m.heures) + '</em></li>';
+      return '<li tabindex="0" data-i="' + i + '"><i class="c' + (i % 8) + '"></i><span>' + esc(m.matiere) + '</span><b>' + fmt(m.heures) + '</b></li>';
     }).join('');
     var val = cam.querySelector('.centre-val'), lib = cam.querySelector('.centre-lib');
     var montre = function (i) {
@@ -170,10 +170,17 @@
     };
     [cam, leg].forEach(function (box) {
       box.addEventListener('mouseover', function (e) { var t = e.target.closest('[data-i]'); if (t) montre(+t.getAttribute('data-i')); });
-      box.addEventListener('mouseleave', function () { montre(null); });
+      box.addEventListener('mouseleave', function () { montre(choisi); });
+    });
+    var choisi = null;
+    [cam, leg].forEach(function (box) {
+      box.addEventListener('click', function (e) {
+        var t = e.target.closest('[data-i]'); if (!t) return;
+        var i = +t.getAttribute('data-i'); choisi = (choisi === i) ? null : i; montre(choisi);
+      });
     });
     leg.addEventListener('focusin', function (e) { var t = e.target.closest('[data-i]'); if (t) montre(+t.getAttribute('data-i')); });
-    leg.addEventListener('focusout', function () { montre(null); });
+    leg.addEventListener('focusout', function () { montre(choisi); });
   }
 
   // Écoles (page Après la prépa) : filtre par domaine
