@@ -58,10 +58,7 @@
   <div class="wrap">
     <h2>Ce que vous allez apprendre</h2>
     <p class="intro">Une formation solide et complète : en deux ans, vous acquérez des bases durables en mathématiques, en physique et en chimie, sur lesquelles vous pourrez vous appuyer quelle que soit la suite de vos études. Avec des travaux pratiques en physique et en chimie chaque semaine.</p>
-    <div class="horaires">
-      <div class="camembert" id="camembert"></div>
-      <ul class="horaires-legende" id="horaires-legende"></ul>
-    </div>
+    <div class="heures" id="heures"></div>
     <p class="note-source">Horaires hebdomadaires de première année. S’y ajoutent les colles et les devoirs surveillés.</p>
     <table class="matieres">
       <tr><th>Physique</th><td>Mécanique, électricité, optique, électromagnétisme, thermodynamique, mécanique des fluides, ondes, physique quantique.</td></tr>
@@ -135,18 +132,19 @@
 </section>
 
 <script>
-/* ===== Volumes horaires du camembert (heures par semaine, première année) =====
-   Modifier les nombres si besoin : le camembert, les pourcentages et le total se recalculent seuls.
-   L'ordre des lignes fixe l'ordre et la couleur des parts. */
+/* ===== Volumes horaires (heures par semaine, première année) =====
+   Modifier les nombres si besoin : les carrés et les totaux se recalculent seuls (les demi-heures sont acceptées : 1.5).
+   sciences : true pour les matières comptées dans « dont … de sciences ».
+   icone : maths, physique, chimie, lettres, anglais, info, tipe ou eps. */
 var HORAIRES = [
-  { matiere: 'Mathématiques', heures: 10 },
-  { matiere: 'Physique', heures: 9 },
-  { matiere: 'Chimie', heures: 6 },
-  { matiere: 'Français-philosophie', heures: 3 },
-  { matiere: 'Anglais', heures: 3 },
-  { matiere: 'Informatique', heures: 2 },
-  { matiere: 'TIPE', heures: 2 },
-  { matiere: 'EPS', heures: 2 }
+  { matiere: 'Mathématiques', heures: 10, icone: 'maths', sciences: true },
+  { matiere: 'Physique', heures: 9, icone: 'physique', sciences: true },
+  { matiere: 'Chimie', heures: 6, icone: 'chimie', sciences: true },
+  { matiere: 'Informatique', heures: 2, icone: 'info', sciences: true },
+  { matiere: 'TIPE', heures: 2, icone: 'tipe', sciences: true },
+  { matiere: 'Français-philosophie', heures: 3, icone: 'lettres', sciences: false },
+  { matiere: 'Anglais', heures: 3, icone: 'anglais', sciences: false },
+  { matiere: 'EPS', heures: 2, icone: 'eps', sciences: false }
 ];
 </script>
 </main>

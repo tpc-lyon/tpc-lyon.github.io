@@ -379,28 +379,6 @@ body.p-contact .page-tete::after { display: none; }
 .sortie h3 { margin: 2px 0 4px; font-size: 1.1rem; }
 .sortie p { margin: 0; color: var(--gris); font-size: 0.95rem; }
 
-/* ---------------- Camembert des volumes horaires (page La prépa) ---------------- */
-.horaires { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(24px, 5vw, 64px); align-items: center; margin: 32px 0 12px; }
-@media (max-width: 720px) { .horaires { grid-template-columns: 1fr; justify-items: center; } }
-.camembert { width: 100%; max-width: 320px; }
-.camembert svg { display: block; width: 100%; height: auto; overflow: visible; }
-.camembert .part { stroke: var(--fond-2); stroke-width: 2; stroke-linejoin: round; transition: opacity .15s, transform .15s; cursor: pointer; }
-.camembert.survol .part { opacity: .35; }
-.camembert.survol .part.on { opacity: 1; transform: scale(1.03); }
-.camembert .centre-val { font-size: 26px; font-weight: 700; fill: var(--encre); }
-.camembert .centre-lib { font-size: 9.5px; fill: var(--gris); }
-.horaires-legende { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; width: 100%; max-width: 440px; }
-.horaires-legende li { cursor: pointer; display: grid; grid-template-columns: 14px 1fr auto; gap: 12px; align-items: center; padding: 7px 10px; border-radius: var(--r); font-size: 0.98rem; outline: none; }
-.horaires-legende li.on, .horaires-legende li:focus-visible { background: #fff; box-shadow: 0 0 0 1px #D3DBE4; }
-.horaires-legende i { width: 14px; height: 14px; border-radius: 4px; }
-.horaires-legende b { font-weight: 650; font-variant-numeric: tabular-nums; }
-.horaires-legende em { font-style: normal; color: var(--gris); text-align: right; font-variant-numeric: tabular-nums; }
-/* Couleurs des parts : palette catégorielle validée (daltonisme), dans un ordre fixe */
-.c0 { fill: #2a78d6; background: #2a78d6; } .c1 { fill: #eb6834; background: #eb6834; }
-.c2 { fill: #1baf7a; background: #1baf7a; } .c3 { fill: #eda100; background: #eda100; }
-.c4 { fill: #e87ba4; background: #e87ba4; } .c5 { fill: #008300; background: #008300; }
-.c6 { fill: #6250d6; background: #6250d6; } .c7 { fill: #e34948; background: #e34948; }
-.camembert .part { background: none; }
 
 /* ---------------- Page La vie en TPC : carte des deux sites ---------------- */
 .sites { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; margin-top: 28px; }
@@ -517,3 +495,28 @@ h3 { font-weight: 600; font-size: 1.22rem; }
 .mot-equipe figcaption { margin-top: 0.4em; color: var(--gris); font-size: 0.98rem; }
 .mot-equipe figcaption::before { content: ''; display: block; width: 48px; height: 3px; margin: 0 auto 14px; border-radius: 2px;
   background: linear-gradient(90deg, var(--h-delta), var(--h-gamma), var(--h-beta), var(--h-alpha)); }
+
+/* ---------------- Page La prépa : volumes horaires (un carré = une heure) ---------------- */
+.heures { --case: 24px; --sci: var(--accent); --autre: #B9AE9C; margin: 32px 0 10px; max-width: 760px; }
+.heures-tete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; margin-bottom: 14px; }
+.heures-total { margin: 0; font-size: 1.1rem; }
+.heures-total b { font-family: var(--titre, inherit); font-size: 1.7rem; font-weight: 650; color: var(--encre); }
+.heures-cle { margin: 0; font-size: 0.88rem; color: var(--gris); }
+.cle { display: inline-block; width: 11px; height: 11px; border-radius: 3px; vertical-align: -1px; margin: 0 3px 0 10px; }
+.cle.sci { background: var(--sci); } .cle.autre { background: var(--autre); }
+.heures-liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--trait); }
+.heures-liste li { display: grid; grid-template-columns: 38px 11.5em max-content 1fr; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--trait); }
+.heures-liste .ico { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fff; box-shadow: 0 0 0 1px var(--trait); }
+.heures-liste .ico svg { width: 22px; height: 22px; fill: none; stroke: var(--encre); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.heures-liste .sci .ico svg { stroke: var(--sci); }
+.heures-liste .nom { font-weight: 600; }
+.heures-liste .cases { display: flex; gap: 4px; }
+.heures-liste .cases i { width: var(--case); height: var(--case); border-radius: 5px; background: var(--sci); flex: none; }
+.heures-liste .autre .cases i { background: var(--autre); }
+.heures-liste .nb { text-align: left; font-variant-numeric: tabular-nums; padding-left: 4px; }
+@media (max-width: 640px) {
+  .heures { --case: 17px; }
+  .heures-liste .nb { text-align: right; }
+  .heures-liste li { grid-template-columns: 38px 1fr 3em; grid-template-areas: 'ico nom nb' 'ico cases cases'; row-gap: 6px; }
+  .heures-liste .ico { grid-area: ico; } .heures-liste .nom { grid-area: nom; } .heures-liste .cases { grid-area: cases; gap: 3px; } .heures-liste .nb { grid-area: nb; }
+}

@@ -140,47 +140,34 @@
     });
   }
 
-  // Camembert des volumes horaires (page La prépa)
-  var cam = document.getElementById('camembert'), leg = document.getElementById('horaires-legende');
-  if (cam && leg && window.HORAIRES) {
-    var H = window.HORAIRES, tot = H.reduce(function (a, m) { return a + m.heures; }, 0);
-    var R = 100, r = 58, a0 = -Math.PI / 2, ns = 'http://www.w3.org/2000/svg';
-    var pct = function (h) { return Math.round(100 * h / tot) + ' %'; };
-    var fmt = function (h) { return String(h).replace('.', ',') + ' h'; };
-    var pt = function (rad, a) { return (rad * Math.cos(a)).toFixed(2) + ' ' + (rad * Math.sin(a)).toFixed(2); };
-    var svg = '<svg viewBox="-104 -104 208 208" role="img" aria-label="Répartition des ' + fmt(tot) + ' hebdomadaires par matière">';
-    H.forEach(function (m, i) {
-      var a1 = a0 + 2 * Math.PI * m.heures / tot, big = (a1 - a0) > Math.PI ? 1 : 0;
-      svg += '<path class="part c' + (i % 8) + '" data-i="' + i + '" d="M ' + pt(R, a0) + ' A ' + R + ' ' + R + ' 0 ' + big + ' 1 ' + pt(R, a1) +
-        ' L ' + pt(r, a1) + ' A ' + r + ' ' + r + ' 0 ' + big + ' 0 ' + pt(r, a0) + ' Z"><title>' + esc(m.matiere) + ' : ' + fmt(m.heures) + '</title></path>';
-      a0 = a1;
-    });
-    svg += '<text class="centre-val" y="2" text-anchor="middle">' + fmt(tot) + '</text><text class="centre-lib" y="22" text-anchor="middle">par semaine</text></svg>';
-    cam.innerHTML = svg;
-    leg.innerHTML = H.map(function (m, i) {
-      return '<li tabindex="0" data-i="' + i + '"><i class="c' + (i % 8) + '"></i><span>' + esc(m.matiere) + '</span><b>' + fmt(m.heures) + '</b></li>';
-    }).join('');
-    var val = cam.querySelector('.centre-val'), lib = cam.querySelector('.centre-lib');
-    var montre = function (i) {
-      cam.classList.toggle('survol', i !== null);
-      cam.querySelectorAll('.part').forEach(function (p) { p.classList.toggle('on', +p.getAttribute('data-i') === i); });
-      leg.querySelectorAll('li').forEach(function (l) { l.classList.toggle('on', +l.getAttribute('data-i') === i); });
-      if (i === null) { val.textContent = fmt(tot); lib.textContent = 'par semaine'; }
-      else { val.textContent = fmt(H[i].heures); lib.textContent = H[i].matiere + ' · ' + pct(H[i].heures); }
+  // Volumes horaires (page La prépa) : une ligne par matière, un carré par heure
+  var hbox = document.getElementById('heures');
+  if (hbox && window.HORAIRES) {
+    var ICONES = {
+      maths: '<path d="M15 4.2c-1.6-1.3-3.9-.7-4.2 1.7L9.2 18.1c-.3 2.4-2.6 3-4.2 1.7"/>',
+      physique: '<path d="M2 12c1.7-5.3 3.3-5.3 5 0s3.3 5.3 5 0 3.3-5.3 5 0 3.3 5.3 5 0"/>',
+      chimie: '<path d="M12 3.5l7.4 4.25v8.5L12 20.5l-7.4-4.25v-8.5z"/><circle cx="12" cy="12" r="3.6"/>',
+      lettres: '<path d="M3 6.2c3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0zM21 6.2c-3-1.5-6-1.5-9 0v13c3-1.5 6-1.5 9 0z"/>',
+      anglais: '<path d="M4.5 4.5h15a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H11l-4.5 3.8v-3.8h-2A1.5 1.5 0 0 1 3 15V6a1.5 1.5 0 0 1 1.5-1.5z"/><path d="M8.6 8.2h-2v5h2M6.6 10.7h1.6M10.8 13.2v-5l2.8 5v-5" stroke-width="1.4"/>',
+      info: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/>',
+      tipe: '<path d="M9.2 17.5h5.6M10 20.5h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1 1.2 1 2v1.2h5.2v-1.2c0-.8.3-1.5 1-2A6 6 0 0 0 12 3z"/>',
+      eps: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5v17M6 6c2.2 1.6 3.5 3.7 3.5 6S8.2 16.4 6 18M18 6c-2.2 1.6-3.5 3.7-3.5 6s1.3 4.4 3.5 6"/>'
     };
-    [cam, leg].forEach(function (box) {
-      box.addEventListener('mouseover', function (e) { var t = e.target.closest('[data-i]'); if (t) montre(+t.getAttribute('data-i')); });
-      box.addEventListener('mouseleave', function () { montre(choisi); });
-    });
-    var choisi = null;
-    [cam, leg].forEach(function (box) {
-      box.addEventListener('click', function (e) {
-        var t = e.target.closest('[data-i]'); if (!t) return;
-        var i = +t.getAttribute('data-i'); choisi = (choisi === i) ? null : i; montre(choisi);
-      });
-    });
-    leg.addEventListener('focusin', function (e) { var t = e.target.closest('[data-i]'); if (t) montre(+t.getAttribute('data-i')); });
-    leg.addEventListener('focusout', function () { montre(choisi); });
+    var H = window.HORAIRES, tot = 0, sci = 0;
+    H.forEach(function (m) { tot += m.heures; if (m.sciences) sci += m.heures; });
+    var fmt = function (h) { return String(h).replace('.', ',') + ' h'; };
+    var lignes = H.map(function (m) {
+      var plein = Math.floor(m.heures), reste = m.heures - plein, cases = '';
+      for (var n = 0; n < plein; n++) cases += '<i></i>';
+      if (reste > 0) cases += '<i style="width:calc(var(--case) * ' + reste.toFixed(2) + ')"></i>';
+      var ico = ICONES[m.icone] ? '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONES[m.icone] + '</svg>' : '';
+      return '<li class="' + (m.sciences ? 'sci' : 'autre') + '"><span class="ico">' + ico + '</span>' +
+        '<span class="nom">' + esc(m.matiere) + '</span><span class="cases" aria-hidden="true">' + cases + '</span>' +
+        '<b class="nb">' + fmt(m.heures) + '</b></li>';
+    }).join('');
+    hbox.innerHTML = '<div class="heures-tete"><p class="heures-total"><b>' + fmt(tot) + '</b> de cours par semaine, dont <b>' + fmt(sci) + '</b> de sciences</p>' +
+      '<p class="heures-cle"><span class="cle sci"></span> sciences <span class="cle autre"></span> autres&nbsp;matières · un&nbsp;carré&nbsp;=&nbsp;une&nbsp;heure</p></div>' +
+      '<ul class="heures-liste">' + lignes + '</ul>';
   }
 
   // Écoles (page Après la prépa) : filtre par domaine
