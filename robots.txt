@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tpc-lyon.github.io/sitemap.xml
